@@ -2,4 +2,6 @@
 .*
 # Exempt .gitignore
 !.gitignore
+!.commonmakefile
+!.colors
 
