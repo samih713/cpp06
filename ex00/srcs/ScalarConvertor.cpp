@@ -1,133 +1,47 @@
 #include "ScalarConvertor.hpp"
+#include "Detector.hpp"
+#include "TypeWrapper.hpp"
 #include <iostream>
 #include <ostream>
-#include <sstream>
+#include <stdexcept>
 
 using std::cout;
 using std::endl;
-using std::istringstream;
-
-static const string INFORMATIVE_MESSAGE("Conversion not possible!");
-
-static const char *is_special_string(const string &input);
-static void        to_char(const string &input, char *const single_char);
-static void        to_int(const string &input, const char singleChar);
-static void        to_float(const string &input, const char singleChar);
-static void        to_double(const string &input, const char singleChar);
+using std::runtime_error;
 
 void ScalarConvertor::convert(const string &input)
 {
-    char singleChar = 0;
-    // char
-    to_char(input, &singleChar);
-    // int
-    to_int(input, singleChar);
-    // float
-    to_float(input, singleChar);
-    // double
-    to_double(input, singleChar);
-}
-
-static const char *is_special_string(const string &input)
-{
-    if (input == "nanf" || input == "nan")
-        return "nan";
-    else if (input == "-inff" || input == "-inf")
-        return "-inf";
-    else if (input == "+inff" || input == "+inf")
-        return "+inf";
-    else
-        return NULL;
-}
-
-static void to_char(const string &input, char *const single_char)
-{
-    cout << "char: ";
-
-    if (input.length() == 1 && isprint(input[0]))
+    TypeWrapper typeWrapper(input);
+    try
     {
-        *single_char = static_cast<char>(input[0]);
-        cout << *single_char << endl;
+        cout << "char: " << static_cast<char>(typeWrapper) << endl;
     }
-    else if (input.length() == 3 &&
-             (*input.begin() == '\'' && *(input.end() - 1) == '\'') && isprint(input[1]))
+    catch (runtime_error &e)
     {
-        *single_char = static_cast<char>(input[1]);
-        cout << *single_char << endl;
+        cout << e.what() << endl;
     }
-    else
-        cout << INFO_MSG(char) << endl;
-}
-
-static void to_int(const string &input, const char singleChar)
-{
-    cout << "int: ";
-
-    if (singleChar)
-        cout << static_cast<int>(singleChar) << endl;
-    else
+    try
     {
-        std::istringstream iss(input);
-        iss >> std::noskipws;
-        int number;
-        if (iss >> number && iss.eof())
-        {
-            cout << number << endl;
-        }
-        else
-        {
-            cout << INFO_MSG(int) << endl;
-        }
+        cout << "int: " << static_cast<int>(typeWrapper) << endl;
     }
-}
-
-static void to_float(const string &input, const char singleChar)
-{
-    const char *spString = is_special_string(input);
-
-    cout << "float: ";
-
-    if (singleChar)
-        cout << static_cast<float>(singleChar) << ".0f" << endl;
-    else if (spString)
-        cout << spString << "f" << endl;
-    else
+    catch (runtime_error &e)
     {
-        std::istringstream iss(input);
-        iss >> std::noskipws;
-        float number;
-        if (iss >> number && iss.eof())
-        {
-            cout << number << "f" << endl;
-        }
-        else
-        {
-            cout << INFO_MSG(float) << endl;
-        }
+        cout << e.what() << endl;
     }
-}
-
-static void to_double(const string &input, const char singleChar)
-{
-    const char *spString = is_special_string(input);
-    cout << "double: ";
-
-    if (singleChar)
-        cout << static_cast<double>(singleChar) << endl;
-    else if (spString)
-        cout << spString << endl;
-    else
+    try
     {
-        std::istringstream iss(input);
-        iss >> std::noskipws;
-        double number;
-        if (iss >> number && iss.eof())
-        {
-            cout << number << endl;
-        }
-        else
-        {
-            cout << INFO_MSG(double) << endl;
-        }
+        cout << "float: " << static_cast<float>(typeWrapper) << endl;
+    }
+    catch (runtime_error &e)
+    {
+        cout << e.what() << endl;
+    }
+    try
+    {
+        cout << "double: " << static_cast<double>(typeWrapper) << endl;
+    }
+    catch (runtime_error &e)
+    {
+        cout << e.what() << endl;
     }
 }

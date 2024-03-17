@@ -22,8 +22,11 @@ all: $(NAME)
 run: $(NAME)
 	./$(NAME)
 
-debug: CXXFLAGS += $(DEBUG_FLAGS) -fsanitize=address
+debug: CXXFLAGS += $(DEBUG_FLAGS) 
 debug: run
+
+sanitize: CXXFLAGS += $(DEBUG_FLAGS) -fsanitize=address
+sanitize: run
 
 $(NAME): $(OBJS)
 	@$(CXX) $(CXXFLAGS) $(DEPFLAGS) $(INCLUDES) -o $@ $^

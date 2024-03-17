@@ -1,15 +1,64 @@
 #include "ScalarConvertor.hpp"
 #include <iostream>
+#include <string>
 
 using std::cerr;
 using std::cout;
 using std::endl;
+using std::string;
 
 int main()
 {
-    // // Test cases basic
-    cout << "Test case 1: [c]" << endl;
-    ScalarConvertor::convert("c");
+    cout << "Test case 5: [1000]" << endl;
+    ScalarConvertor::convert("0"); // Min int value
+    cout << endl;
+
+#if 0
+    cout << "Test case x: [10f]" << endl;
+    ScalarConvertor::convert("10f");
+    cout << endl;
+
+    cout << "Test case 8: [-9182391873913]" << endl;
+    ScalarConvertor::convert("-9182391873913");
+    cout << endl;
+
+    cout << "Test case 8: [-12323423424243242423f]" << endl;
+    ScalarConvertor::convert("-12323423424243242423F");
+    cout << endl;
+
+    // // float test cases
+    cout << "Test case 1: [10f]" << endl;
+    ScalarConvertor::convert("10f");
+    cout << endl;
+
+    cout << "Test case 2: [.f]" << endl;
+    ScalarConvertor::convert(".f");
+    cout << endl;
+
+    cout << "Test case 3: [25.4f]" << endl;
+    ScalarConvertor::convert("25.4f");
+    cout << endl;
+
+    cout << "Test case 4: [.24.3f]" << endl;
+    ScalarConvertor::convert(".24.3f");
+    cout << endl;
+
+    cout << "Test case 5: [-.6f]" << endl;
+    ScalarConvertor::convert("-.6f");
+    cout << endl;
+
+    cout << "Test case 6: [.3ff]" << endl;
+    ScalarConvertor::convert(".3ff");
+    cout << endl;
+
+    cout << "Test case 7: [.]" << endl;
+    ScalarConvertor::convert(".");
+    cout << endl;
+
+
+    // Test cases basic
+    cout << "Test case 1: [1f]" << endl;
+    ScalarConvertor::convert("1f");
     cout << endl;
 
     cout << "Test case 2: ['b']" << endl;
@@ -20,7 +69,7 @@ int main()
     ScalarConvertor::convert("0");
     cout << endl;
 
-    // // Test cases for int conversions
+    // // // Test cases for int conversions
     cout << "Test case 4: [2147483647]" << endl;
     ScalarConvertor::convert("2147483647"); // Max int value
     cout << endl;
@@ -37,7 +86,7 @@ int main()
     ScalarConvertor::convert("-2147483649"); // Below min int value
     cout << endl;
 
-    // Test cases for special strings
+    // // Test cases for special strings
     cout << "Test case 8: [-inff]" << endl;
     ScalarConvertor::convert("-inff");
     cout << endl;
@@ -85,6 +134,7 @@ int main()
     cout << "Test case 19: [    2147]" << endl;
     ScalarConvertor::convert("    2147"); // spcaes
     cout << endl;
+#endif // 0
 
     return 0;
 }

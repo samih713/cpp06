@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-std=c++98",
+      "-I./includes",
+      "-c",
+      "-o",
+      "objs/ScalarConvertor.o",
+      "srcs/ScalarConvertor.cpp"
+    ],
+    "directory": "/home/eva001/42/cpp/cpp06/ex00",
+    "file": "/home/eva001/42/cpp/cpp06/ex00/srcs/ScalarConvertor.cpp",
+    "output": "/home/eva001/42/cpp/cpp06/ex00/objs/ScalarConvertor.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-std=c++98",
+      "-I./includes",
+      "-c",
+      "-o",
+      "objs/main.o",
+      "srcs/main.cpp"
+    ],
+    "directory": "/home/eva001/42/cpp/cpp06/ex00",
+    "file": "/home/eva001/42/cpp/cpp06/ex00/srcs/main.cpp",
+    "output": "/home/eva001/42/cpp/cpp06/ex00/objs/main.o"
+  }
+]

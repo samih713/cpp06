@@ -1,6 +1,6 @@
 NAME:= ScalarConvertor
 
-SRCS:= ScalarConvertor.cpp main.cpp
+SRCS:= ScalarConvertor.cpp Detector.cpp TypeWrapper.cpp main.cpp
 
 -include ../.commonmakefile
 

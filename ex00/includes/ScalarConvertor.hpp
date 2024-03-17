@@ -1,3 +1,4 @@
+/* includes */
 #include <string>
 #include <vector>
 
@@ -6,14 +7,14 @@
 
 /* macros */
 #if defined(__DEBUG__)
-#define DEBUG_PRINT(x) (cerr << x << endl)
+#define DEBUG_PRINT(x) (std::cerr << x << std::endl)
 #else
 #define DEBUG_PRINT(x)
 #endif // (__DEBUG__)
 
 #define INFO_MSG(type) ("Conversion to " #type " not possible")
-/* macros */
 
+/* using */
 using std::string;
 
 class ScalarConvertor
