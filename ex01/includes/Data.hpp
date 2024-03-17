@@ -5,7 +5,7 @@
 
 using std::string;
 
-class Data
+struct Data
 {
 
     public:
