@@ -7,13 +7,20 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int main()
+int main(int argc, char **argv)
 {
+    if (argc != 2)
+    {
+        cerr << "usage: " << argv[0] << " something to convert" << endl;
+        return 0;
+    }
+    ScalarConvertor::convert(argv[1]);
+
+#if 0
     cout << "Test case 5: [1000]" << endl;
     ScalarConvertor::convert("0"); // Min int value
     cout << endl;
-
-#if 0
+	k
     cout << "Test case x: [10f]" << endl;
     ScalarConvertor::convert("10f");
     cout << endl;

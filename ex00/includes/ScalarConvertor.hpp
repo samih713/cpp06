@@ -12,7 +12,7 @@
 #define DEBUG_PRINT(x)
 #endif // (__DEBUG__)
 
-#define INFO_MSG(type) ("Conversion to " #type " not possible")
+#define PRECISION 8
 
 /* using */
 using std::string;

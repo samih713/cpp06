@@ -38,9 +38,9 @@ TypeWrapper::TypeWrapper(const string &input)
                 string        temp(input.substr(0, input.length() - 1));
                 istringstream iss(temp);
                 iss >> std::noskipws;
-                if (!(iss >> value.d && iss.eof()))
+                if (!(iss >> value.f && iss.eof()))
                     throw runtime_error("\nfloat failed");
-                if (value.f < std::numeric_limits<float>::min() ||
+                if (value.f < (-1.0f * std::numeric_limits<float>::max()) ||
                     value.f > std::numeric_limits<float>::max())
                     throw runtime_error("\nfloat failed");
                 break;
@@ -53,7 +53,7 @@ TypeWrapper::TypeWrapper(const string &input)
                 if (!(iss >> value.d && iss.eof()))
                     throw runtime_error("\ndouble failed");
                 if (value.d > std::numeric_limits<double>::max() ||
-                    value.d < std::numeric_limits<double>::min())
+                    value.d < (-1.0 * std::numeric_limits<double>::max()))
                     throw runtime_error("\ndouble failed");
                 break;
             }
@@ -125,17 +125,18 @@ TypeWrapper::operator int() const
 // type cast overload int
 TypeWrapper::operator float() const
 {
+    std::cout.precision(PRECISION);
     switch (type)
     {
         case CHAR:
         case Q_CHAR: cout << static_cast<float>(value.c); throw runtime_error(".0f");
         case INT: cout << static_cast<float>(value.i); throw runtime_error(".0f");
 
-        case I_FLOAT: cout << value.f; throw runtime_error(".0f");
-        case FLOAT: cout << value.f; throw runtime_error("f");
+        case I_FLOAT: cout << static_cast<float>(value.f); throw runtime_error(".0f");
+        case FLOAT: cout << static_cast<float>(value.f); throw runtime_error("f");
 
-        case I_DOUBLE: cout << value.d; throw runtime_error(".0f");
-        case DOUBLE: cout << value.d; throw runtime_error("f");
+        case I_DOUBLE: cout << static_cast<float>(value.d); throw runtime_error(".0f");
+        case DOUBLE: cout << static_cast<float>(value.d); throw runtime_error("f");
 
         case SPECIAL: throw runtime_error(*value.s + "f");
         case F_SPECIAL: throw runtime_error(*value.s);
@@ -146,6 +147,7 @@ TypeWrapper::operator float() const
 
 TypeWrapper::operator double() const
 {
+    std::cout.precision(PRECISION);
     switch (type)
     {
         case CHAR:
