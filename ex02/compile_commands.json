@@ -1,0 +1,19 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-std=c++98",
+      "-I./includes",
+      "-c",
+      "-o",
+      "objs/main.o",
+      "srcs/main.cpp"
+    ],
+    "directory": "/home/eva001/42/cpp/cpp06/ex02",
+    "file": "/home/eva001/42/cpp/cpp06/ex02/srcs/main.cpp",
+    "output": "/home/eva001/42/cpp/cpp06/ex02/objs/main.o"
+  }
+]
